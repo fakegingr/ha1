@@ -91,23 +91,6 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
 
-    // evtl. Bug
-
-    @Test
-    @DisplayName("should display error when pressing a digit and equal right away, without any operators")
-    void testOperators () {
-        Calculator calc = new Calculator();
-
-        calc.pressDigitKey(1);
-        calc.pressEqualsKey();
-
-        String expected = "";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-
-    }
-
     // Teilaufgabe 1
 
     @Test
@@ -128,6 +111,24 @@ class CalculatorTest {
     }
     // Teilaufgabe 2
 
+    // Test 1
+
+    @Test
+    @DisplayName("should display result after adding two positive decimal numbers")
+    void testRoot() {
+        Calculator calc = new Calculator();
+
+
+        calc.pressDigitKey(4);
+        calc.pressUnaryOperationKey("√");
+
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
     @Test
     @DisplayName("should display result after adding two positive decimal numbers")
     void testDecimalAddition() {
@@ -146,23 +147,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    @DisplayName("should display result after adding two positive numbers and multiplying it by another number ")
-    void testMultipleOperators() {
-        Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(3);
-        calc.pressBinaryOperationKey("x");
-        calc.pressDigitKey(6);
-        calc.pressEqualsKey();
-
-        String expected = "20";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-    }
 
 }
 

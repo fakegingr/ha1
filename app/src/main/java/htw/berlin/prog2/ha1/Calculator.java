@@ -65,11 +65,11 @@ public class Calculator {
     }
 
     /**
-     * Empfängt den Wert einer gedrückten unären Operationstaste, also eine der drei Operationen
-     * Quadratwurzel, Prozent, Inversion, welche nur einen Operanden benötigen.
+     * Empfängt den Wert einer gedrückten unären Operationstaste, also eine der vier Operationen
+     * Quadratwurzel, Prozent, Inversion, Vozeichenwechsel welche nur einen Operanden benötigen.
      * Beim Drücken der Taste wird direkt die Operation auf den aktuellen Zahlenwert angewendet und
      * der Bildschirminhalt mit dem Ergebnis aktualisiert.
-     * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
+     * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion, "+/-" für Vorzeichenwechsel
      */
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
@@ -83,6 +83,7 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.equals("NaN")) screen = "Error";
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);// Bugfix 1
 
     }
 
