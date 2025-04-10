@@ -31,7 +31,7 @@ public class Calculator {
     public void pressDigitKey(int digit) {
         if(digit > 9 || digit < 0) throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+        if(screen.equals("0")) {screen = "";} // Bugfix 2, damit die 0 wahrgenommen wird
 
         screen = screen + digit;
     }
@@ -62,6 +62,7 @@ public class Calculator {
     public void pressBinaryOperationKey(String operation)  {
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
+        screen = "0"; // Bugfix 2, Bildschirm für neue Zahl auf 0 setzten
     }
 
     /**
@@ -96,6 +97,8 @@ public class Calculator {
      */
     public void pressDotKey() {
         if(!screen.contains(".")) screen = screen + ".";
+
+        if(screen.equals(".")) screen = "0."; //Bugfix 2, Sonderfall "." nach 0
     }
 
     /**
