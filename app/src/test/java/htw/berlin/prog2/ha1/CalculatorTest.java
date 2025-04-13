@@ -98,13 +98,13 @@ class CalculatorTest {
     void testPositiveSubtraction() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(1);
         calc.pressDigitKey(0);
         calc.pressBinaryOperationKey("-");
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(8);
         calc.pressEqualsKey();
 
-        String expected = "18";
+        String expected = "2";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
@@ -128,6 +128,7 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    //Test 2
 
     @Test
     @DisplayName("should display result after adding two positive decimal numbers")
